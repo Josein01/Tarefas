@@ -1,0 +1,37 @@
+body {
+    background-color: rgb(165, 86, 239);
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 2%;
+}
+.list-group {
+    margin-right: 2%;
+    width: 40%; 
+}
+.list-group h3 {
+    margin-top: 10rem; 
+    margin-bottom: 2rem;
+}
+.list-group a {
+    display: block; /* Garante que os links fiquem um embaixo do outro */
+    margin-bottom: 2rem; 
+    color: white; 
+    text-decoration: none; /* Remove o sublinhado */
+    font-size: 1.2rem; /* Tamanho de fonte relativo */
+}
+.input-box {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%; 
+}
+.input-box textarea {
+    width: 100%; 
+    padding: 1rem; /* Espaçamento interno relativo */
+    border-radius: 0.5rem; /* Bordas arredondadas */
+    font-size: 1rem; /* Tamanho de fonte relativo */
+    box-sizing: border-box;
+    height: 40rem; 
+    resize: none; /* Impede o redimensionamento */
+}

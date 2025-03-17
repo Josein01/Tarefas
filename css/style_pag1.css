@@ -57,3 +57,20 @@ main {
     font-weight: lighter;
     
 }
+
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .pg_inicial_ft, .pg_inicial {
+        width: 100%;
+        padding: 5px;
+        margin: 5px;
+    }
+
+    .p1, .p2 {
+        font-size: 14px;
+    }
+}

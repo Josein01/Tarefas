@@ -35,3 +35,15 @@ body {
     height: 40rem; 
     resize: none; /* Impede o redimensionamento */
 }
+
+@media (max-width: 768px) {
+    .list-group {
+        width: 100%;
+        margin: 0;
+    }
+
+    .input-box textarea {
+        height: 20rem;
+        font-size: 14px;
+    }
+}

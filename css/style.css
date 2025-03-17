@@ -153,4 +153,31 @@ button {
   position: absolute;
   background-color: rgba(0,0,0,0.8);
 }
+@media (max-width: 768px) {
+  body {
+      margin-top: 20px;
+      display: block;
+  }
 
+  #container {
+      width: 100%;
+      padding: 10px;
+  }
+
+  #weekdays {
+      display: flex;
+      flex-wrap: wrap;
+  }
+
+  #weekdays div {
+      width: 14%;
+      text-align: center;
+      font-size: 12px;
+  }
+
+  .day {
+      width: 80px;
+      height: 80px;
+      font-size: 12px;
+  }
+}

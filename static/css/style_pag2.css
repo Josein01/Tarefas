@@ -10,7 +10,7 @@ body {
 }
 
 .sidebar {
-    background-color: rgb(225, 162, 255);
+    background-color: #C4904A;
     padding: 20px;
     width: 300px;
     height: 100vh;
@@ -19,7 +19,7 @@ body {
 
 .sidebar h2 {
     margin: 0;
-    color:rgb(225, 162, 255);
+    color: #C4904A;
     align-items: center;
     text-align: center;
 }

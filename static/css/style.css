@@ -132,7 +132,7 @@ button {
   box-shadow: 0px 0px 3px gray;
 }
 #eventTitleInput.error {
-  border: 2px solid red;
+  border: 2px solid rgb(220, 158, 25);
 }
 #cancelButton, #deleteButton {
   background-color: var(--header-color);

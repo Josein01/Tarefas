@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#myButton {
+    z-index: 10;
+}
+
+.bg-custom {
+    background-color: #BE6A15;
+}
+
+.container {
+    margin-top: 5%; 
+    margin-left: 10%;
+    width: 80%;
+    max-width: 500px;
+    height: auto;
+    display: flex;
+    border-radius: 40px;
+    flex-direction: column;
+    padding: 40px;
+    position: relative;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.bg-white {
+    background-color: #ffffff; 
+    height: 100%; 
+}
+
+
+.btn-primary {
+    width: 100%;
+    border: none;
+    border-radius: 50px;
+    background: rgb(179, 187, 146);
+}
+
+.btn-primary:hover {
+    background-color: rgb(106, 39, 11); 
+}
+
+img {
+    width: 50%;
+    height: auto; 
+    display: block;
+    margin: 0 auto; 
+}
+
+h1, h4 {
+    color: black;
+}
+
+
+h1 {
+    font-size: 2rem; /* Tamanho menor */
+}
+
+h4 {
+    font-size: 1.5rem !important; /* Reduzido */
+}
+
+.header-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 10px;
+}
+
+.img-top-left {
+    position: absolute;
+    top: 0%; /* Distância do topo em % */
+    left: 0%; /* Distância da esquerda em % */
+    width: 20%; /* Largura proporcional à tela */
+    max-width: 300px; /* Limite máximo de largura */
+    height: auto; /* Manter a proporção da imagem */
+    z-index: -1; /* Garante que fique acima do texto */
+    pointer-events: none; /* Impede que interfira no clique dos elementos abaixo */
+}
+
+.img-top-left {
+    width: 20%; /* Aumenta proporcionalmente ao tamanho da tela */
+    max-width: 300px; /* Limita o tamanho máximo */
+}
+
+
+
+
+@media only screen and (max-width: 600px) {
+
+    
+
+    .col-md-6.bg-white {
+        width: 100%;
+    }
+}

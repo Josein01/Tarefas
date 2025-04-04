@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -61,9 +61,9 @@
                 <div class="list-group" id="list-tab" role="tablist">
             
                     <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list"
-                        href="#list-profile" role="tab" aria-controls="profile">Notas</a>
+                        href="#list-profile" role="tab" aria-controls="profile">Listas</a>
                     <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list"
-                        href="#list-messages" role="tab" aria-controls="messages">Listas</a>
+                        href="#list-messages" role="tab" aria-controls="messages">Notas</a>
                     <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list"
                         href="#list-calendario" role="tab" aria-controls="Calendario">Calendário</a>
                   
@@ -73,7 +73,20 @@
                 <div class="tab-content" id="nav-tabContent">
 
                     <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
-                        Conteúdo Profile
+                        <div class="container">                            
+                            <div class="create-list">
+                                <input type="text" id="new-list-name" placeholder="Nome da nova lista">
+                                <button id="create-list-btn">Criar Lista</button>
+                            </div>
+                            
+                            <div id="lists-container" class="lists-container">
+                                <div id="empty-message" class="empty-message">
+                                    Nenhuma lista criada. Crie sua primeira lista acima!
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <script src="js/script.js"></script>
                     </div>
                     <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
                         <div class="tab-pane fade show active" id="list-home" role="tabpanel"
@@ -187,6 +200,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

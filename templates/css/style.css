@@ -233,6 +233,7 @@ button {
   font-size: 1rem;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   transition: background-color 0.2s;
 }
@@ -277,16 +278,71 @@ button:hover {
 .list-title {
   font-size: 1.25rem;
   font-weight: 600;
+  margin-right: auto;
+}
+
+.header-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.edit-title-btn, .remove-list-btn {
+  background-color: transparent;
+  padding: 0.25rem;
+  width: 28px;
+  height: 28px;
+}
+
+.edit-title-btn {
+  color: #3b82f6;
+}
+
+.edit-title-btn:hover {
+  background-color: rgba(59, 130, 246, 0.1);
 }
 
 .remove-list-btn {
-  background-color: transparent;
   color: #ef4444;
-  padding: 0.5rem;
 }
 
 .remove-list-btn:hover {
   background-color: rgba(239, 68, 68, 0.1);
+}
+
+.edit-title-form {
+  display: flex;
+  width: 100%;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.edit-title-input {
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.save-btn, .cancel-btn {
+  width: 28px;
+  height: 28px;
+  padding: 0.25rem;
+}
+
+.save-btn {
+  background-color: #10b981;
+}
+
+.save-btn:hover {
+  background-color: #059669;
+}
+
+.cancel-btn {
+  background-color: #ef4444;
+}
+
+.cancel-btn:hover {
+  background-color: #dc2626;
 }
 
 .list-content {
@@ -311,6 +367,7 @@ button:hover {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex: 1;
 }
 
 .item-checkbox {
@@ -330,19 +387,20 @@ button:hover {
 
 .remove-item-btn {
   background-color: transparent;
-  color: #666;
+  color: #ef4444;
   padding: 0.25rem;
+  width: 28px;
+  height: 28px;
 }
 
 .remove-item-btn:hover {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(239, 68, 68, 0.1);
 }
 
 .empty-items-message {
   text-align: center;
   color: #999;
   padding: 1rem 0;
-  display: none;
 }
 
 .add-item {
@@ -360,6 +418,75 @@ button:hover {
 
 .add-item-btn {
   padding: 0.5rem;
+  width: 36px;
+  height: 36px;
+}
+
+/* Modal de confirmação */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+}
+
+.modal-content h3 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.modal-content p {
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.confirm-btn {
+  padding: 0.5rem 1.5rem;
+  font-size: 0.95rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.yes-btn {
+  background-color: #ef4444;
+}
+
+.yes-btn:hover {
+  background-color: #dc2626;
+}
+
+.no-btn {
+  background-color: #6b7280;
+}
+
+.no-btn:hover {
+  background-color: #4b5563;
 }
 
 @media (max-width: 768px) {

@@ -4,6 +4,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const createListBtn = document.getElementById('create-list-btn');
     const listsContainer = document.getElementById('lists-container');
     const emptyMessage = document.getElementById('empty-message');
+    const confirmModal = document.getElementById('confirm-modal');
+    const confirmYesBtn = document.getElementById('confirm-yes');
+    const confirmNoBtn = document.getElementById('confirm-no');
+    
+    // Variável para armazenar o ID da lista a ser excluída
+    let listToDeleteId = null;
     
     // Array para armazenar as listas
     let lists = [];
@@ -102,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const removeListBtn = document.createElement('button');
         removeListBtn.className = 'remove-list-btn';
         removeListBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path></svg>';
-        removeListBtn.addEventListener('click', () => removeList(list.id));
+        removeListBtn.addEventListener('click', () => showDeleteConfirmation(list.id));
         
         headerActions.appendChild(editTitleBtn);
         headerActions.appendChild(removeListBtn);
@@ -195,6 +201,26 @@ document.addEventListener('DOMContentLoaded', function() {
         listsContainer.appendChild(listCard);
     }
     
+    // Mostrar confirmação de exclusão
+    function showDeleteConfirmation(listId) {
+        listToDeleteId = listId;
+        confirmModal.classList.add('active');
+    }
+    
+    // Fechar o modal de confirmação
+    function closeConfirmModal() {
+        confirmModal.classList.remove('active');
+        listToDeleteId = null;
+    }
+    
+    // Confirmar exclusão da lista
+    function confirmDeleteList() {
+        if (listToDeleteId) {
+            removeList(listToDeleteId);
+            closeConfirmModal();
+        }
+    }
+    
     // Iniciar a edição do título da lista
     function startEditTitle(listId) {
         const listCard = document.querySelector(`.list-card[data-list-id="${listId}"]`);
@@ -255,7 +281,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Reconfigurar os event listeners
             listCard.querySelector('.edit-title-btn').addEventListener('click', () => startEditTitle(listId));
-            listCard.querySelector('.remove-list-btn').addEventListener('click', () => removeList(listId));
+            listCard.querySelector('.remove-list-btn').addEventListener('click', () => showDeleteConfirmation(listId));
         }
         
         // Função para cancelar a edição
@@ -264,7 +290,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Reconfigurar os event listeners
             listCard.querySelector('.edit-title-btn').addEventListener('click', () => startEditTitle(listId));
-            listCard.querySelector('.remove-list-btn').addEventListener('click', () => removeList(listId));
+            listCard.querySelector('.remove-list-btn').addEventListener('click', () => showDeleteConfirmation(listId));
         }
         
         // Configurar event listeners para o formulário de edição
@@ -390,6 +416,17 @@ document.addEventListener('DOMContentLoaded', function() {
         // Atualizar mensagem de lista vazia
         updateEmptyMessage();
     }
+    
+    // Event listeners para o modal de confirmação
+    confirmYesBtn.addEventListener('click', confirmDeleteList);
+    confirmNoBtn.addEventListener('click', closeConfirmModal);
+    
+    // Fechar o modal ao clicar fora dele
+    confirmModal.addEventListener('click', function(e) {
+        if (e.target === confirmModal) {
+            closeConfirmModal();
+        }
+    });
     
     // Event listeners
     createListBtn.addEventListener('click', createList);

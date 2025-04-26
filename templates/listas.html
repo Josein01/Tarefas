@@ -100,58 +100,57 @@
                         <script src="js/script.js"></script>
                     </div>
                     <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
-                        <div class="tab-pane fade show active" id="list-home" role="tabpanel"
-                            aria-labelledby="list-home-list">
-                            <div id="shopping-list"></div>
-                            <div class="button-container">
-                                <button type="button" class="btn btn-secondary" data-toggle="modal"
-                                    data-target="#staticBackdrop">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                                        class="bi bi-clipboard2-plus-fill" viewBox="0 0 16 16">
-                                        <path
-                                            d="M10 .5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5.5.5 0 0 1-.5.5.5.5 0 0 0-.5.5V2a.5.5 0 0 0 .5.5h5A.5.5 0 0 0 11 2v-.5a.5.5 0 0 0-.5-.5.5.5 0 0 1-.5-.5">
-                                        </path>
-                                        <path
-                                            d="M4.085 1H3.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1h-.585q.084.236.085.5V2a1.5 1.5 0 0 1-1.5 1.5h-5A1.5 1.5 0 0 1 4 2v-.5q.001-.264.085-.5M8.5 6.5V8H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V9H6a.5.5 0 0 1 0-1h1.5V6.5a.5.5 0 0 1 1 0">
-                                        </path>
+                        <!-- Sistema de Notas -->
+                        <div class="container">
+                            <div class="create-note">
+                                <button id="create-note-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 5v14M5 12h14"></path>
                                     </svg>
                                 </button>
                             </div>
-                            <div class="modal fade" id="staticBackdrop" data-backdrop="static"
-                                data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="staticBackdropLabel">Adicionar Tarefa</h5>
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="popup-container">
-                                                <div class="popup-box">
-                                                  <div class="container">
-                                                    <div class="mb-3">
-                                                        <input type="text" id="item-input" class="form-control mb-2" placeholder="Nome da Tarefa">
-                                                        <textarea rows="6" id="desc-input" class="form-control mb-2" placeholder="Tarefa"></textarea>
-                                                    </div>
-                                                </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">Fechar</button>
-                                                <button class="btn btn-primary" id="add-item-btn">Adicionar</button>
-                                             
-                                            <script src="js/localStorage.js"></script>
-                                        </div>
-                                    </div>
+                            
+                            <div id="notes-container" class="notes-container">
+                                <div id="empty-message" class="empty-message">
+                                    Nenhuma nota criada. Crie sua primeira nota acima!
                                 </div>
                             </div>
                         </div>
+                        
+                        <!-- Modal para criar/editar notas -->
+                        <div id="note-modal" class="modal">
+                            <div class="modal-content note-modal-content">
+                                <h3 id="note-modal-title">Nova Nota</h3>
+                                <div class="note-form">
+                                    <div class="form-group">
+                                        <label for="note-title-input">Título</label>
+                                        <input type="text" id="note-title-input" placeholder="Título da nota">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="note-description-input">Descrição</label>
+                                        <textarea id="note-description-input" rows="6" placeholder="Descrição da nota"></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-actions">
+                                    <button id="save-note-btn" class="confirm-btn yes-btn">Salvar</button>
+                                    <button id="cancel-note-btn" class="confirm-btn no-btn">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Modal de confirmação para exclusão -->
+                        <div id="confirm-modal-notes" class="modal">
+                            <div class="modal-content">
+                                <h3>Confirmação</h3>
+                                <p>Tem certeza que deseja excluir esta nota?</p>
+                                <div class="modal-actions">
+                                    <button id="confirm-yes-notes" class="confirm-btn yes-btn">Sim</button>
+                                    <button id="confirm-no-notes" class="confirm-btn no-btn">Não</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <script src="js/notes.js"></script>
                     </div>
                     <div class="tab-pane fade" id="list-calendario" role="tabpanel" aria-labelledby="Calendario">
                         <div id="container">

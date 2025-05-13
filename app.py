@@ -1,27 +1,30 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify, session, flash
-from db_connection import create_connection, close_connection
+from bd_connectionn import create_connection, close_connection
 import hashlib
 
 app = Flask(__name__)
 app.secret_key = "Shadow_4EVER"
+
+@app.route("/")
+def index():
+    return redirect(url_for("login"))
+
 
 # Função auxiliar para gerar o hash da senha
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
 
 # Rota para criar conta (ajustada para o HTML fornecido)
-@app.route("/login/criar_conta", methods=["GET", "POST"])
+@app.route("/templates/criar_conta.html", methods=["GET", "POST"])
 def criar_conta():
     if request.method == "POST":
-        nome = request.form.get("nome")
-        sobrenome = request.form.get("sobrenome")
+        nome = request.form.get("firstName")
+        sobrenome = request.form.get("lastName")
         email = request.form.get("email")
-        senha = request.form.get("senha")
-        confirmar_senha = request.form.get("confirmar_senha")
+        senha = request.form.get("password")
 
-        # Validação básica (senhas iguais)
-        if senha != confirmar_senha:
-            return redirect(url_for("criar_conta"))  # Redireciona sem mensagem
+
+        
 
         # Verifica se o e-mail já existe
         conn = create_connection()
@@ -46,7 +49,7 @@ def criar_conta():
         # Login automático
         session["usuario_id"] = usuario_id
         session["nome"] = nome
-        return redirect(url_for("home"))  # Redireciona para a home após cadastro
+        return redirect(url_for("listas"))  # Redireciona para a home após cadastro
 
     return render_template("criar_conta.html") 
 

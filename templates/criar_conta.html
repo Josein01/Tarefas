@@ -14,7 +14,7 @@
                 <img src="/static/image/criar_conta/x.png" alt="Voltar" class="img-fluid">
             </button>
         </div>
-        <form action="#" class="form-text w-100">
+        <form method="POST" action="/templates/criar_conta.html" class="form-text w-100">
             <div class="form-header ">
                 <div class="title">
                     <h1>Criar Conta</h1>
@@ -36,10 +36,6 @@
                         <label for="password">Senha</label>
                         <input class="form-control" type="password" name="password" id="password" required>
                     </div>
-                    <div class="input-box mb-3">
-                        <label for="Confirmpassword">Confirmar Senha</label>
-                        <input class="form-control" type="password" name="Confirmpassword" id="Confirmpassword" required>
-                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary mt-3">Criar Conta</button>
             </div>
@@ -50,16 +46,8 @@
     <script>
         document.getElementById('createAccountForm').addEventListener('submit', function(event) {
             const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
             const errorMessage = document.getElementById('error-message');
 
-            if (password !== confirmPassword) {
-                event.preventDefault(); // Impede o envio do formulário
-                errorMessage.textContent = 'As senhas não coincidem.';
-                errorMessage.style.display = 'block';
-            } else {
-                errorMessage.style.display = 'none'; // Esconde a mensagem de erro se as senhas coincidem
-            }
         });
     </script>
 </body>

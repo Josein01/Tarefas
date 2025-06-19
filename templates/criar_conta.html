@@ -10,9 +10,9 @@
 <body>
     <div class="container d-flex flex-column justify-content-center align-items-center vh-80">
         <div>
-            <button onclick="window.location.href='/templates/login.html';" id="myButton" class="btn position-absolute top-0 end-0 m-3 p-0 border-0 bg-transparent">
-                <img src="/static/image/criar_conta/x.png" alt="Voltar" class="img-fluid">
-            </button>
+            <a href="{{ url_for('login') }}" id="myButton" class="btn position-absolute top-0 end-0 m-3 p-0 border-0 bg-transparent">
+                <img src="{{ url_for('static', filename='image/criar_conta/x.png') }}" alt="Voltar" class="img-fluid">
+            </a>
         </div>
         <form method="POST" action="/templates/criar_conta.html" class="form-text w-100">
             <div class="form-header ">

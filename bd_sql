@@ -1,0 +1,115 @@
+
+
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
+-- -----------------------------------------------------
+-- Schema pi_iii
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema pi_iii
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `pi_iii` DEFAULT CHARACTER SET utf8mb3 ;
+USE `mydb` ;
+
+
+-- -----------------------------------------------------
+-- Table `pi_iii`.`Usuario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `pi_iii`.`Usuario` (
+  `idUsuario` INT NOT NULL AUTO_INCREMENT,
+  `NomeUsuario` VARCHAR(45) NOT NULL,
+  `SobrenomeUsuario` VARCHAR(100) NOT NULL,
+  `EmailUsuario` VARCHAR(45) NOT NULL,
+  `senhaUsuario` VARCHAR(200) NOT NULL,
+  PRIMARY KEY (`idUsuario`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 14
+DEFAULT CHARACTER SET = utf8mb3;
+
+
+-- -----------------------------------------------------
+-- Table `pi_iii`.`RecuperacaoSenha`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `pi_iii`.`RecuperacaoSenha` (
+  `idRecuperacaoSenha` INT ZEROFILL NOT NULL AUTO_INCREMENT,
+  `Token` VARCHAR(255) NOT NULL,
+  `Usuario_idUsuario` INT NOT NULL,
+  PRIMARY KEY (`idRecuperacaoSenha`),
+  INDEX `fk_RecuperacaoSenha_Usuario_idx` (`Usuario_idUsuario` ASC) VISIBLE,
+  CONSTRAINT `fk_RecuperacaoSenha_Usuario`
+    FOREIGN KEY (`Usuario_idUsuario`)
+    REFERENCES `pi_iii`.`Usuario` (`idUsuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `pi_iii`.`Calendario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `pi_iii`.`Calendario` (
+  `idCalendario` INT NOT NULL AUTO_INCREMENT,
+  `DataCalendario` DATETIME NOT NULL,
+  `Usuario_idUsuario` INT NOT NULL,
+  PRIMARY KEY (`idCalendario`),
+  INDEX `fk_Calendario_Usuario_idx` (`Usuario_idUsuario` ASC) VISIBLE,
+  CONSTRAINT `fk_Calendario_Usuario`
+    FOREIGN KEY (`Usuario_idUsuario`)
+    REFERENCES `pi_iii`.`Usuario` (`idUsuario`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3;
+
+
+-- -----------------------------------------------------
+-- Table `pi_iii`.`Lista`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `pi_iii`.`Lista` (
+  `idLista` INT NOT NULL AUTO_INCREMENT,
+  `txtLista` VARCHAR(45) NOT NULL,
+  `Usuario_idUsuario` INT NOT NULL,
+  PRIMARY KEY (`idLista`),
+  INDEX `fk_Lista_Usuario1_idx` (`Usuario_idUsuario` ASC) VISIBLE,
+  CONSTRAINT `fk_Lista_Usuario1`
+    FOREIGN KEY (`Usuario_idUsuario`)
+    REFERENCES `pi_iii`.`Usuario` (`idUsuario`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3;
+
+
+-- -----------------------------------------------------
+-- Table `pi_iii`.`Notas`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `pi_iii`.`Notas` (
+  `idNotas` INT NOT NULL AUTO_INCREMENT,
+  `txtNotas` VARCHAR(45) NULL DEFAULT NULL,
+  `Usuario_idUsuario` INT NOT NULL,
+  PRIMARY KEY (`idNotas`),
+  INDEX `fk_Notas_Usuario1_idx` (`Usuario_idUsuario` ASC) VISIBLE,
+  CONSTRAINT `fk_Notas_Usuario1`
+    FOREIGN KEY (`Usuario_idUsuario`)
+    REFERENCES `pi_iii`.`Usuario` (`idUsuario`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+USE `pi_iii` ;
+
+select * from `Usuario`;
+

@@ -14,22 +14,22 @@
     <div class="container-fluid d-flex flex-row vh-100 p-0">
         <!-- Segunda div (à esquerda) - Formulário -->
         <div class="col-md-6 bg-white d-flex justify-content-center align-items-center position-relative">
-            <button onclick="window.location.href='/templates/landing_page.html';" id="myButton" class="btn position-absolute top-0 start-0 m-3 p-0 border-0 bg-transparent">
+            <a href="{{ url_for('landing_page') }}" class="btn position-absolute top-0 start-0 m-3 p-0 border-0 bg-transparent">
                 <img src="/static/image/login/voltar.png" alt="Voltar" class="img-fluid">
-            </button>
+            </a>
             <form class="mx-auto">
                 <h4 class="text-center">Entrar na conta</h4>
                 <div class="mb-3 mt-5">
-                    <label for="exampleInputEmail1" class="form-label">Nome do usuário</label>
+                    <label for="exampleInputEmail1" class="form-label">Email do usuário</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Senha</label>
                     <input type="password" class="form-control" id="exampleInputPassword1">
-                    <a class="form-text mt-3" href="templates/recuperar_conta.html">Esqueci a Senha</a> <br>
-                    <a class="form-text mt-3" href="templates/criar_conta.html">Criar conta</a>
+                    <a class="form-text mt-3" href="{{ url_for('recuperar_conta') }}">Esqueci a Senha</a><br>
+                    <a class="form-text mt-3" href="{{ url_for('criar_conta') }}">Criar conta</a>
                 </div>
-                <button onclick="window.location.href='/templates/home.html';" type="submit" class="btn btn-primary mt-5">Login</button>
+                <button type="submit" formaction="{{ url_for('listas') }}" class="btn btn-primary mt-5">Login</button>
             </form>
         </div>
 

@@ -10,13 +10,13 @@
 <body>
     <div class="container d-flex flex-column justify-content-center align-items-center vh-80">
         <div>
-            <button onclick="window.location.href='/templates/login.html';" id="myButton" class="btn position-absolute top-0 end-0 m-3 p-0 border-0 bg-transparent">
-                <img src="/static/image/criar_conta/x.png" alt="Voltar" class="img-fluid">
-            </button>
+            <a href="{{ url_for('login') }}" id="myButton" class="btn position-absolute top-0 end-0 m-3 p-0 border-0 bg-transparent">
+                <img src="{{ url_for('static', filename='image/criar_conta/x.png') }}" alt="Voltar" class="img-fluid">
+            </a>
         </div>
 
         <!-- Formulário de recuperação de conta -->
-        <form action="/recuperar-conta" method="POST" class="form-text w-100">
+        <form action="{{ url_for('recuperar_conta') }}" method="POST" class="form-text w-100">
             <div class="form-header">
                 <div class="title">
                     <h1>Recuperar Conta</h1>
@@ -27,7 +27,9 @@
                         <input class="form-control" type="email" name="email" id="email" required>
                     </div>
                 </div>
-                <button onclick="window.location.href='/templates/nova_senha.html';" type="submit" class="btn btn-primary mt-3">Enviar email de confirmação</button>
+                <button type="submit" class="btn btn-primary mt-3">
+                    Enviar email de confirmação
+                </button>
             </div>
         </form>
 
